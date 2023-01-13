@@ -29,3 +29,10 @@ def addResult(request):
     newEmployee.save()
 
     return HttpResponseRedirect(reverse('index'))
+
+def deleteEmployee(request, id):
+    employeeToDelete = Employee.objects.get(id=id)
+    employeeToDelete.delete()
+
+    return HttpResponseRedirect(reverse('index'))
+
