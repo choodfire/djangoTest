@@ -5,4 +5,4 @@ import datetime
 class Employee(models.Model):
     name = models.CharField(default='noname', max_length=100)
     title = models.CharField(max_length=100)
-    joinDate = models.DateField(default=datetime.date(2020, 6, 14))
+    joinDate = models.DateField(default=datetime.date.today())
