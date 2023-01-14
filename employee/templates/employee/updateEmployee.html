@@ -3,7 +3,7 @@
 
 <body>
   <h1>Update employee</h1>
-    <form method="POST" action="updateResult/" target="_blank">
+    <form method="POST" action="updateResult/">
         {% csrf_token %}
         Name: <input name="name" value="{{ empl.name }}">
         Title: <input name="title" value="{{ empl.title }}">

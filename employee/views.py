@@ -8,10 +8,13 @@ from django.template import loader
 from .models import Employee
 from django.urls import reverse
 
-def index(request):
-    myEmployees = Employee.objects.all().values()
+def index(request): # ceo cfo cob coo
+    management = Employee.objects.filter(title__in=["CEO","CFO","COB","COO"])
+    employees = Employee.objects.all().values().exclude(title__in=["CEO","CFO","COB","COO"])
     context = {
-        'myEmployees': myEmployees
+        "management": management,
+        'employees': employees,
+        "Title": "Employees"
     }
 
     template = loader.get_template('employee/index.html')
@@ -19,7 +22,7 @@ def index(request):
 
 def addEmployee(request):
     template = loader.get_template('employee/addEmployee.html')
-    return HttpResponse(template.render({}, request))
+    return HttpResponse(template.render({"Title": "Add employees"}, request))
 
 def addResult(request):
     nameReceived = request.POST["name"]
@@ -39,7 +42,8 @@ def deleteEmployee(request, id):
 def updateEmployee(request, id):
     employeeToUpdate = Employee.objects.get(id=id)
     context = {
-        'empl': employeeToUpdate
+        'empl': employeeToUpdate,
+        'Title': "Update"
     }
 
     template = loader.get_template('employee/updateEmployee.html')
