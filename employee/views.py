@@ -14,11 +14,11 @@ def index(request):
         'myEmployees': myEmployees
     }
 
-    template = loader.get_template('index.html')
+    template = loader.get_template('employee/index.html')
     return HttpResponse(template.render(context, request))
 
 def addEmployee(request):
-    template = loader.get_template('addEmployee.html')
+    template = loader.get_template('employee/addEmployee.html')
     return HttpResponse(template.render({}, request))
 
 def addResult(request):
@@ -42,7 +42,7 @@ def updateEmployee(request, id):
         'empl': employeeToUpdate
     }
 
-    template = loader.get_template('updateEmployee.html')
+    template = loader.get_template('employee/updateEmployee.html')
     return HttpResponse(template.render(context, request))
 
 def updateResult(request, id):

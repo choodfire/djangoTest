@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<body>
+  <h1>Update employee</h1>
+    <form method="POST" action="updateResult/" target="_blank">
+        {% csrf_token %}
+        Name: <input name="name" value="{{ empl.name }}">
+        Title: <input name="title" value="{{ empl.title }}">
+        <input type="submit" value="Update" />
+    </form>
+</body>
+
+{% endblock content %}

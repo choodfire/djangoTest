@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{%block content%}
+<body>
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Employees</h1>
+        <p class="lead text-muted">List of our employees</p>
+        <p>
+<!--          <a href="#" class="btn btn-primary my-2">Main call to action</a>-->
+<!--          <a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <a href="add" target="_blank">Add employee</a>
+
+  {% if myEmployees.count > 0 %}
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for empl in myEmployees %}
+            <div class="col">
+              <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                <div class="card-body">
+
+                  <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">{{ empl.title }}</strong>
+                    <h3 class="mb-0">{{ empl.name }}</h3>
+                    <div class="mb-1 text-muted">Joined us {{ empl.joinDate }}</div>
+                    <p class="card-text mb-auto">Quote</p>
+<!--                    <a href="#">Employee card</a>-->
+<!--                    <a href="delete/{{ empl.id }}/" target="_blank">Delete employee</a>-->
+<!--                    <a href="update/{{ empl.id }}/" target="_blank">Update employee</a>-->
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <a class="btn btn-sm btn-outline-secondary" href="update/{{ empl.id }}/" target="_blank" role="button">Edit</a>
+                      <a class="btn btn-sm btn-outline-secondary" href="delete/{{ empl.id }}/" role="button">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+  {% else %}
+  <h1>No employees</h1>
+  {% endif %}
+
+</main>
+
+
+{% endblock content %}
