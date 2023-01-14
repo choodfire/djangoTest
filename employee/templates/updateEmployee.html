@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update information about employee</title>
+</head>
+<body>
+  <h1>Update employee</h1>
+    <form method="POST" action="updateResult/" target="_blank">
+        {% csrf_token %}
+        Name: <input name="name" placeholder="{{ empl.name }}">
+        Title: <input name="title" placeholder="{{ empl.title }}">
+
+        <input type="submit" value="Update" />
+    </form>
+</body>
+</html>
