@@ -10,7 +10,7 @@ from django.urls import reverse
 
 def index(request): # ceo cfo cob coo
     management = Employee.objects.filter(title__in=["CEO","CFO","COB","COO"])
-    employees = Employee.objects.all().values().exclude(title__in=["CEO","CFO","COB","COO"])
+    employees = Employee.objects.all().values().exclude(title__in=["CEO","CFO","COB","COO"]) # not sure if this is efficient
     context = {
         "management": management,
         'employees': employees,
