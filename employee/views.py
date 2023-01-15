@@ -61,3 +61,7 @@ def updateResult(request, id):
     employeeToUpdate.save()
 
     return HttpResponseRedirect(reverse('index'))
+
+def blogsList(request):
+    template = loader.get_template('employee/blogsList.html')
+    return HttpResponse(template.render({"Title": "Blogs"}, request))

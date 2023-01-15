@@ -10,3 +10,12 @@ class Employee(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.title}"
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=100, null=False, blank=False)
+    desc = models.TextField(null=False, blank=False)
+    featured = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.title}"
