@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from .models import Employee
+from .models import Employee, BlogPost
 from django.urls import reverse
 
 def index(request): # ceo cfo cob coo
@@ -64,4 +64,13 @@ def updateResult(request, id):
 
 def blogsList(request):
     template = loader.get_template('employee/blogsList.html')
-    return HttpResponse(template.render({"Title": "Blogs"}, request))
+
+    featured = BlogPost.objects.filter(featured=True)
+    posts = BlogPost.objects.filter(featured=False)
+    context = {
+        "posts": posts,
+        'featured': featured,
+        "Title": "Blogs"
+    }
+
+    return HttpResponse(template.render(context, request))
